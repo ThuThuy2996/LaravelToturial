@@ -10,6 +10,7 @@
 @section('content')
   <!-- form start -->
   <form action="" method="POST">
+    @include('admin.alert')
     <div class="card-body">
 
       <div class="form-group">
@@ -20,9 +21,10 @@
       <div class="form-group">
         <label for="parent_id">Danh Mục</label>
         <select class="custom-select form-control-border" id="parent_id" name="parent_id">
-            <option>Danh Mục 1</option>
-            <option>Danh Mục 2</option>
-            <option>Danh Mục 3</option>
+            <option  value="0">_Chọn Danh Mục Cha_</option>
+            @foreach($menus as $menu)
+                    <option value="{{ $menu->id }}">{{ $menu->name }}</option>
+            @endforeach
         </select>
       </div>
 
@@ -46,6 +48,7 @@
     <div class="card-footer">
       <button type="submit" class="btn btn-primary">Lưu</button>
     </div>
+    @csrf
   </form>
 @endsection
 
